@@ -1,4 +1,5 @@
 ﻿using Linear_Algebra_Csharp.Part_1;
+using Linear_Algebra_Csharp.Part_1._01_Basic_Concepts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,31 @@ namespace Linear_Algebra_Csharp
     {
         static void Main(string[] args)
         {
+            float[,] matrix = { { 2, 3, 4 }, { 4, 5, 6 }, { 6, 7, 8 } };
+            float scalar = 2;
+            Console.WriteLine(matrix[1, 2]); // Выведет 6 (вторая строка, третий столбец)
+            float[,] result = Matrix.MultiplyMatrixByScalar(matrix, scalar);
+
+            for (int i = 0; i < result.GetLength(0); i++)
+            {
+                for (int j = 0; j < result.GetLength(1); j++)
+                {
+                    Console.Write(result[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            float[] pointA = { 2.5f, 3.0f };
+            float[] pointB = { 5.0f, 7.5f };
+
+            float pointC = 23;
+
+            (float ax, float bx) = Vectors.VectorScaling(pointA, pointC);
+            Console.WriteLine($"Δx: {ax}, Δy: {bx}");
+
+            (float dx, float dy) = Vectors.VectorComponents(pointA, pointB);
+            Console.WriteLine($"Δx: {dx}, Δy: {dy}");
+
             Quadrant qt1 = new Quadrant();
             qt1.Finding_part(5, 3); //quadrant I
             qt1.Finding_part(-2, 4); //quadrant II
